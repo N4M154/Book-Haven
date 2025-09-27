@@ -6,7 +6,7 @@ spring:
     name: checkout-service
   data:
     mongodb:
-      uri: mongodb+srv://namisanajahraisa:244466666@bookhaven.qjestxj.mongodb.net/bookstore?retryWrites=true&w=majority&appName=bookhaven
+      uri: mongodb+srv://<name>:<password>@bookhaven.qjestxj.mongodb.net/bookstore?retryWrites=true&w=majority&appName=bookhaven
 
 eureka:
   client:
