@@ -1,0 +1,16 @@
+server:
+  port: 9002
+
+spring:
+  application:
+    name: checkout-service
+  data:
+    mongodb:
+      uri: mongodb+srv://namisanajahraisa:244466666@bookhaven.qjestxj.mongodb.net/bookstore?retryWrites=true&w=majority&appName=bookhaven
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
