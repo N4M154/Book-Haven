@@ -1,0 +1,321 @@
+{
+	"info": {
+		"_postman_id": "104184db-4148-4953-906b-4d9a282826d6",
+		"name": "Namisa_Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33047879",
+		"_collection_link": "https://solo66-1179.postman.co/workspace/microservice~e48b35f7-e9d7-4881-a420-69920823ece1/collection/33047879-104184db-4148-4953-906b-4d9a282826d6?action=share&source=collection_link&creator=33047879"
+	},
+	"item": [
+		{
+			"name": "Namisa_ConnectionTest_V1",
+			"item": [
+				{
+					"name": "register user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"status is 200\", () => pm.response.to.have.status(200));\r",
+									"const json = pm.response.json();\r",
+									"pm.test(\"has id\", () => pm.expect(json).to.have.property(\"id\"));\r",
+									"pm.environment.set(\"userId\", json.id);\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"misamisamisamisamisamisa@example.com\",\r\n  \"password\": \"pass123\",\r\n  \"name\": \"Misa\",\r\n  \"phone\": \"0123456789\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{gateway_base}}/api/users/register",
+							"host": [
+								"{{gateway_base}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"misamisamisamisamisamisa@example.com\",\r\n  \"password\": \"pass123\",\r\n  \"name\": \"Misa\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{gateway_base}}/api/users/login",
+							"host": [
+								"{{gateway_base}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addbook",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"23\",\r\n  \"author\": \"Shakespeare\",\r\n  \"isbn\": \"9780441013593\",\r\n  \"price\": 20.00,\r\n  \"description\": \"Play\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{gateway_base}}/api/books",
+							"host": [
+								"{{gateway_base}}"
+							],
+							"path": [
+								"api",
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "set inventory for book",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"inventory set\", () => pm.response.to.have.status(200));\r",
+									"const inv = pm.response.json();\r",
+									"pm.expect(inv).to.have.property(\"bookId\");\r",
+									"pm.expect(inv.available).to.be.a(\"number\");\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"qty\": 30 }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{gateway_base}}/api/inventory/id?=68d64c4ddf6a7c52fb41ea91/set",
+							"host": [
+								"{{gateway_base}}"
+							],
+							"path": [
+								"api",
+								"inventory",
+								"id"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "68d64c4ddf6a7c52fb41ea91/set"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "place an order",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"order status is 200\", () => pm.response.to.have.status(200));\r",
+									"const order = pm.response.json();\r",
+									"pm.expect(order).to.have.property(\"id\");\r",
+									"pm.environment.set(\"orderId\", order.id);\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"userId\": \"{{userId}}\",\r\n  \"shippingAddress\": \"Dhaka\",\r\n  \"items\": [\r\n    { \"bookId\": \"{{bookId}}\", \"qty\": 10 }\r\n  ],\r\n  \"totalAmount\": 200.00 \r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{gateway_base}}/api/orders",
+							"host": [
+								"{{gateway_base}}"
+							],
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "verify order",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"get order ok\", () => pm.response.to.have.status(200));\r",
+									"const o = pm.response.json();\r",
+									"pm.expect(o).to.have.property(\"id\");\r",
+									"pm.expect(o.id).to.eql(pm.environment.get(\"orderId\"));\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{gateway_base}}/api/orders/{{orderId}}",
+							"host": [
+								"{{gateway_base}}"
+							],
+							"path": [
+								"api",
+								"orders",
+								"{{orderId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "verify book decreased",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"inventory returned\", () => pm.response.to.have.status(200));\r",
+									"const inv = pm.response.json();\r",
+									"pm.expect(inv).to.have.property(\"available\");\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{gateway_base}}/api/inventory/{{bookId}}",
+							"host": [
+								"{{gateway_base}}"
+							],
+							"path": [
+								"api",
+								"inventory",
+								"{{bookId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "order out of stock book",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"userId\": \"{{userId}}\",\r\n  \"shippingAddress\": \"Dhaka\",\r\n  \"items\": [\r\n    { \"bookId\": \"{{bookId}}\", \"qty\": 12 }\r\n  ],\r\n  \"totalAmount\": 200.00 \r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{gateway_base}}/api/orders",
+							"host": [
+								"{{gateway_base}}"
+							],
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

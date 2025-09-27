@@ -1,0 +1,279 @@
+{
+	"info": {
+		"_postman_id": "ac5dfc25-5080-442f-9130-a086ce35d291",
+		"name": "Nazifa_test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33047879",
+		"_collection_link": "https://solo66-1179.postman.co/workspace/microservice~e48b35f7-e9d7-4881-a420-69920823ece1/collection/33047879-ac5dfc25-5080-442f-9130-a086ce35d291?action=share&source=collection_link&creator=33047879"
+	},
+	"item": [
+		{
+			"name": "nazifa_test",
+			"item": [
+				{
+					"name": "Create a User (UserService)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Alice\",\r\n  \"email\": \"alice@example.com\",\r\n  \"password\": \"secret123\",\r\n  \"phone\": \"0123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/users/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"alice@example.com\",\r\n  \"password\": \"secret123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add a Book to Catalog",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Clean Code\",\r\n  \"author\": \"Robert C. Martin\",\r\n  \"price\": 40.0,\r\n  \"stock\": 10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/books",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View All Books (Catalog Service)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/books",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Book to User’s Cart",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"bookId\": \"68b7f39f6657fc0a8f7c1f20\",\r\n  \"qty\": 2,\r\n  \"priceAtAdd\": 40.0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/carts/68d5b0c99e49c70a134222f7/items",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"carts",
+								"68d5b0c99e49c70a134222f7",
+								"items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View User’s Cart",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/carts/68d5b0c99e49c70a134222f7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"carts",
+								"68d5b0c99e49c70a134222f7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "set inventory for book",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"qty\": 10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/inventory/68b7f39f6657fc0a8f7c1f20/set",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"inventory",
+								"68b7f39f6657fc0a8f7c1f20",
+								"set"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Place an Order (Order Service)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"userId\": \"68d5b0c99e49c70a134222f7\",\r\n  \"shippingAddress\": \"Dhaka\",\r\n  \"items\": [\r\n    { \"bookId\": \"68b7f39f6657fc0a8f7c1f20\", \"qty\": 1 }\r\n  ],\r\n  \"totalAmount\": 37.50\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Order by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/orders/68d5bec774bf9141fdeddbaf",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"orders",
+								"68d5bec774bf9141fdeddbaf"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check Inventory After Order",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/inventory/68b7f39f6657fc0a8f7c1f20",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"inventory",
+								"68b7f39f6657fc0a8f7c1f20"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
