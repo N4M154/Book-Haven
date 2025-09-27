@@ -40,7 +40,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"email\": \"misamisamisamisamisamisa@example.com\",\r\n  \"password\": \"pass123\",\r\n  \"name\": \"Misa\",\r\n  \"phone\": \"0123456789\"\r\n}\r\n",
+							"raw": "{\r\n  \"email\": \"NamisaNajahRaisa@example.com\",\r\n  \"password\": \"pass123\",\r\n  \"name\": \"Misa\",\r\n  \"phone\": \"0123456789\"\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -48,10 +48,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{gateway_base}}/api/users/register",
+							"raw": "http://localhost:8081/api/users/register",
+							"protocol": "http",
 							"host": [
-								"{{gateway_base}}"
+								"localhost"
 							],
+							"port": "8081",
 							"path": [
 								"api",
 								"users",
@@ -68,7 +70,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"email\": \"misamisamisamisamisamisa@example.com\",\r\n  \"password\": \"pass123\",\r\n  \"name\": \"Misa\"\r\n}\r\n",
+							"raw": "{\r\n  \"email\": \"NamisaNajahRaisa@example.com\",\r\n  \"password\": \"pass123\",\r\n  \"name\": \"Misa\"\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -76,10 +78,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{gateway_base}}/api/users/login",
+							"raw": "http://localhost:8081/api/users/login",
+							"protocol": "http",
 							"host": [
-								"{{gateway_base}}"
+								"localhost"
 							],
+							"port": "8081",
 							"path": [
 								"api",
 								"users",
@@ -104,10 +108,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{gateway_base}}/api/books",
+							"raw": "http://localhost:8081/api/books",
+							"protocol": "http",
 							"host": [
-								"{{gateway_base}}"
+								"localhost"
 							],
+							"port": "8081",
 							"path": [
 								"api",
 								"books"
@@ -154,20 +160,17 @@
 							}
 						},
 						"url": {
-							"raw": "{{gateway_base}}/api/inventory/id?=68d64c4ddf6a7c52fb41ea91/set",
+							"raw": "http://localhost:8081/api/inventory/68d790e0b7c32b18055c6640/set",
+							"protocol": "http",
 							"host": [
-								"{{gateway_base}}"
+								"localhost"
 							],
+							"port": "8081",
 							"path": [
 								"api",
 								"inventory",
-								"id"
-							],
-							"query": [
-								{
-									"key": "",
-									"value": "68d64c4ddf6a7c52fb41ea91/set"
-								}
+								"68d790e0b7c32b18055c6640",
+								"set"
 							]
 						}
 					},
@@ -197,7 +200,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"userId\": \"{{userId}}\",\r\n  \"shippingAddress\": \"Dhaka\",\r\n  \"items\": [\r\n    { \"bookId\": \"{{bookId}}\", \"qty\": 10 }\r\n  ],\r\n  \"totalAmount\": 200.00 \r\n}\r\n",
+							"raw": "{\r\n  \"userId\": \"68d790a485fecc3f12b24599\",\r\n  \"shippingAddress\": \"Dhaka\",\r\n  \"items\": [\r\n    { \"bookId\": \"68d790e0b7c32b18055c6640\", \"qty\": 10 }\r\n  ],\r\n  \"totalAmount\": 200.00 \r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -205,10 +208,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{gateway_base}}/api/orders",
+							"raw": "http://localhost:8081/api/orders",
+							"protocol": "http",
 							"host": [
-								"{{gateway_base}}"
+								"localhost"
 							],
+							"port": "8081",
 							"path": [
 								"api",
 								"orders"
@@ -240,14 +245,16 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{gateway_base}}/api/orders/{{orderId}}",
+							"raw": "http://localhost:8081/api/orders/68d791a72439887d2764d99b",
+							"protocol": "http",
 							"host": [
-								"{{gateway_base}}"
+								"localhost"
 							],
+							"port": "8081",
 							"path": [
 								"api",
 								"orders",
-								"{{orderId}}"
+								"68d791a72439887d2764d99b"
 							]
 						}
 					},
@@ -275,14 +282,16 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{gateway_base}}/api/inventory/{{bookId}}",
+							"raw": "http://localhost:8081/api/inventory/68d790e0b7c32b18055c6640",
+							"protocol": "http",
 							"host": [
-								"{{gateway_base}}"
+								"localhost"
 							],
+							"port": "8081",
 							"path": [
 								"api",
 								"inventory",
-								"{{bookId}}"
+								"68d790e0b7c32b18055c6640"
 							]
 						}
 					},
@@ -295,7 +304,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"userId\": \"{{userId}}\",\r\n  \"shippingAddress\": \"Dhaka\",\r\n  \"items\": [\r\n    { \"bookId\": \"{{bookId}}\", \"qty\": 12 }\r\n  ],\r\n  \"totalAmount\": 200.00 \r\n}\r\n",
+							"raw": "{\r\n  \"userId\": \"68d790a485fecc3f12b24599\",\r\n  \"shippingAddress\": \"Dhaka\",\r\n  \"items\": [\r\n    { \"bookId\": \"68d790e0b7c32b18055c6640\", \"qty\": 40 }\r\n  ],\r\n  \"totalAmount\": 200.00 \r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -303,10 +312,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{gateway_base}}/api/orders",
+							"raw": "http://localhost:8081/api/orders",
+							"protocol": "http",
 							"host": [
-								"{{gateway_base}}"
+								"localhost"
 							],
+							"port": "8081",
 							"path": [
 								"api",
 								"orders"
